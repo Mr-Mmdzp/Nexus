@@ -476,7 +476,7 @@ const averageProgress = projects.length
                 <div className="stat-icon blue">◉</div>
                 <div>
                   <span>CPU Usage</span>
-                  <strong>32%</strong>
+                  <strong>32%ᶠᵃᵏᵉ</strong>
                   <small>Normal</small>
                 </div>
               </div>
@@ -485,7 +485,7 @@ const averageProgress = projects.length
                 <div className="stat-icon purple">◈</div>
                 <div>
                   <span>Memory</span>
-                  <strong>61%</strong>
+                  <strong>61%ᶠᵃᵏᵉ</strong>
                   <small>9.8 / 16 GB</small>
                 </div>
               </div>
@@ -494,7 +494,7 @@ const averageProgress = projects.length
                 <div className="stat-icon orange">▰</div>
                 <div>
                   <span>Storage</span>
-                  <strong>74%</strong>
+                  <strong>74%ᶠᵃᵏᵉ</strong>
                   <small>356 GB used</small>
                 </div>
               </div>
