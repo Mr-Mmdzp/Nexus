@@ -508,10 +508,11 @@ function App() {
 
                 <div className="projects">
                   {projects.slice(0, 3).map((project) => (
-                    <ProjectCard
+                   <ProjectCard
                       key={project.id}
                       project={project}
-                      onDelete={deleteProject}
+                      tasks={tasks}
+                     onDelete={deleteProject}
                     />
                   ))}
                 </div>
@@ -602,10 +603,11 @@ function App() {
             <div className="full-project-grid">
               {projects.map((project) => (
                 <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onDelete={deleteProject}
-                />
+                     key={project.id}
+                      project={project}
+                      tasks={tasks}
+                      onDelete={deleteProject}
+                    />
               ))}
 
               {projects.length === 0 && (
@@ -998,7 +1000,18 @@ function App() {
   );
 }
 
-function ProjectCard({ project, onDelete }) {
+function ProjectCard({ project, tasks, onDelete}) {
+  const projectTasks = tasks.filter(
+  (task) => task.project === project.name
+);
+
+const completedTasks = projectTasks.filter(
+  (task) => task.completed
+).length;
+
+const progress = projectTasks.length
+  ? Math.round((completedTasks / projectTasks.length) * 100)
+  : 0;
   return (
     <article className="project-card">
       <div className="project-top">
@@ -1030,11 +1043,11 @@ function ProjectCard({ project, onDelete }) {
       <p>{project.description}</p>
 
       <div className="progress">
-        <div style={{ width: `${project.progress}%` }}></div>
+        <div style={{ width: `${progress}%` }}></div>
       </div>
 
       <span className="progress-text">
-        {project.progress}% complete
+        {progress}% complete
       </span>
     </article>
   );
