@@ -14,7 +14,10 @@ It brings projects, tasks, notes, activity, analytics and settings together in o
 **[Open NEXUS →](https://mr-mmdzp.github.io/Nexus/)**
 
 ---
+## 📸 Preview
 
+![NEXUS Dashboard](./screenshots/preview.png)
+---
 ## ✨ Features
 
 - 📊 Dashboard overview
