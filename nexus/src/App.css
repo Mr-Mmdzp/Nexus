@@ -1601,3 +1601,34 @@ a {
   scrollbar-width: thin;
   scrollbar-color: #202633 #080a0f;
 }
+.Name-inp-con {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Name-inp-con strong {
+  font-size: 14px;
+  color: #f1f5f9;
+}
+
+.Name-inp-con input {
+  width: 220px;
+  padding: 10px 14px;
+  border: 1px solid #202633;
+  border-radius: 10px;
+  background: #0b0e14;
+  color: #f1f5f9;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.Name-inp-con input::placeholder {
+  color: #667085;
+}
+
+.Name-inp-con input:focus {
+  border-color: #4da3ff;
+  box-shadow: 0 0 0 3px rgba(77, 163, 255, 0.1);
+}

@@ -123,6 +123,9 @@ function App() {
   const [showProjectModal, setShowProjectModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
   const [showNoteModal, setShowNoteModal] = useState(false);
+  const [userName, setUserName] = useState(
+  localStorage.getItem("nexus-username") || "Someone"
+);
 
   const [newProject, setNewProject] = useState({
     name: "",
@@ -155,6 +158,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("nexus-activity", JSON.stringify(activity));
   }, [activity]);
+
+useEffect(() => {
+  localStorage.setItem("nexus-username", userName);
+}, [userName]);
 
   useEffect(() => {
     localStorage.setItem("nexus-theme", theme);
@@ -429,7 +436,7 @@ const averageProgress = projects.length
             <p className="eyebrow">PERSONAL COMMAND CENTER</p>
             <h1>
               {activePage === "Dashboard"
-                ? "Good afternoon, Mmdzp."
+                ? `Good afternoon, ${userName}`
                 : activePage}
             </h1>
           </div>
@@ -793,6 +800,11 @@ const averageProgress = projects.length
               </div>
 
               <div className="setting">
+              <div className="Name-inp-con" >
+                <strong>Username</strong>
+                <span>Choose the name displayed in your workspace.</span>
+                <input type="text" maxLength={10} value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Enter Your Username ..."/>
+              </div>
                 <div>
                   <strong>Local Storage</strong>
                   <span>Your Nexus data is stored locally in your browser.</span>
