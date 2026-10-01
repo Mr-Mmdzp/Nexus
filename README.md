@@ -16,7 +16,7 @@ It brings projects, tasks, notes, activity, analytics and settings together in o
 ---
 ## 📸 Preview
 
-![NEXUS Dashboard](./assests/preview.png)
+![NEXUS Dashboard](.src/assests/preview.png)
 ---
 ## ✨ Features
 
