@@ -167,13 +167,25 @@ function App() {
     (project) => project.status === "Active"
   ).length;
 
-  const averageProgress = projects.length
-    ? Math.round(
-        projects.reduce((sum, project) => sum + project.progress, 0) /
-          projects.length
-      )
-    : 0;
+const averageProgress = projects.length
+  ? Math.round(
+      projects.reduce((sum, project) => {
+        const projectTasks = tasks.filter(
+          (task) => task.project === project.name
+        );
 
+        const completedTasks = projectTasks.filter(
+          (task) => task.completed
+        ).length;
+
+        const progress = projectTasks.length
+          ? Math.round((completedTasks / projectTasks.length) * 100)
+          : 0;
+
+        return sum + progress;
+      }, 0) / projects.length
+    )
+  : 0;
   const searchResults = useMemo(() => {
     if (!search.trim()) return [];
 
@@ -730,7 +742,20 @@ function App() {
                 </div>
               </div>
 
-              {projects.map((project) => (
+              {projects.map((project) => {
+                  const projectTasks = tasks.filter(
+                    (task) => task.project === project.name
+                 );
+
+                  const completedTasks = projectTasks.filter(
+                    (task) => task.completed
+                 ).length;
+
+                  const progress = projectTasks.length
+                   ? Math.round((completedTasks / projectTasks.length) * 100)
+                    : 0;
+
+                return(
                 <div className="analytics-row" key={project.id}>
                   <div>
                     <span className="mini-icon">{project.icon}</span>
@@ -738,12 +763,12 @@ function App() {
                   </div>
 
                   <div className="analytics-bar">
-                    <div style={{ width: `${project.progress}%` }}></div>
+                    <div style={{ width: `${progress}%` }}></div>
                   </div>
 
-                  <span>{project.progress}%</span>
-                </div>
-              ))}
+                  <span>{progress}%</span>
+                </div>)
+              })}
             </div>
           </PageContainer>
         )}
